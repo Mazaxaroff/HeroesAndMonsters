@@ -1,5 +1,8 @@
 package org.heroesAndMonsters.models;
 
+import lombok.Data;
+
+@Data
 public class Player extends Creature {
     private int countOfHills;
     private final int maxHealth;
@@ -12,6 +15,7 @@ public class Player extends Creature {
     public void hillUp() {
         if (this.countOfHills > 0) {
             this.setHealth(this.getHealth() + (int) (this.maxHealth * 0.3));
+            countOfHills--;
         }
     }
 
