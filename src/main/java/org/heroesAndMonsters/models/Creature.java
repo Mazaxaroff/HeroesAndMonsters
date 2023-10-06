@@ -1,9 +1,9 @@
 package org.heroesAndMonsters.models;
 
 import lombok.Data;
-import org.heroesAndMonsters.services.InputService;
+import org.heroesAndMonsters.gameplay.Dialog;
+import org.heroesAndMonsters.services.RandomNumberService;
 
-import java.util.Random;
 
 @Data
 public class Creature {
@@ -14,35 +14,28 @@ public class Creature {
     private int damageMin;
     private int damageMax;
     private boolean isAlive;
+    RandomNumberService randomNumberService = new RandomNumberService();
+    Dialog dialog = new Dialog();
 
     public Creature() {
-        InputService inputService = new InputService();
-        this.setName(inputService.inputName());
-        this.setAttack(inputService.inputAttack());
-        this.setDefense(inputService.inputDefense());
-        this.setHealth(inputService.inputHealth());
-        this.setDamageMin(inputService.inputMinDamage());
-        this.setDamageMax(inputService.inputMaxDamage(this.getDamageMin()));
-        this.isAlive = true;
-    }
-
-    public void getInfo() {
-        System.out.printf("Имя - %s, атака - %d, защита - %d, здоровье - %d, минимальный урон - %d, " +
-                "максимальный урон - %d \n", this.name, this.attack, this.defense, this.health, this.damageMin, this.damageMax);
     }
 
     public void hit(Creature creature) {
-        Random random = new Random();
-        int attackModifier = this.attack - (creature.defense + 1);
+        int cubeMin = 1;
+        int cubeMax = 6;
+        int attackModifier = attack - (creature.getDefense() + 1);
         int cubeFace;
         do {
-            cubeFace = random.nextInt(1, 6);
+            cubeFace = randomNumberService.get(cubeMin, cubeMax);
+            attackModifier--;
             if (cubeFace >= 5) {
-                creature.setHealth(creature.health - random.nextInt(this.damageMin, this.damageMax));
-                if (creature.health <= 0) {
+                int damage = randomNumberService.get(damageMin, damageMax);
+                creature.setHealth(creature.getHealth() - damage);
+                dialog.hit(name, creature.getName(), damage, creature.getHealth());
+                if (creature.getHealth() <= 0) {
                     creature.die();
                 }
-                attackModifier--;
+                break;
             }
         } while (attackModifier > 0);
     }
