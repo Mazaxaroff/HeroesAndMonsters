@@ -4,7 +4,6 @@ import org.heroesAndMonsters.models.Creature;
 import org.heroesAndMonsters.models.Monster;
 import org.heroesAndMonsters.models.Player;
 import org.heroesAndMonsters.services.InputService;
-import org.heroesAndMonsters.services.RandomNumberService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class Game {
     InputService inputService = new InputService();
 
     public void start() {
-        System.out.println("\u001b[35m" + dialog.LETS_START + "\u001b[0m");
+        System.out.println(dialog.LETS_START);
         prepare();
         while (!bestiary.isEmpty() && player.isAlive()) {
             battle(selectFromBestiary());

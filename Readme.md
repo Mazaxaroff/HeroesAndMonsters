@@ -9,7 +9,8 @@ ___
 #### По итогу игры будет показано количество побежденных монстров.
 ___
 ## Запуск программы:
+#### Cкачать jar-файл, находящийся в папке build
 Запустить в командной строке:
-$ java -jar ./build/HeroesAndMonsters.jar
+java -jar "{путь к папке, в которую был скачан jar-файл}\HeroesAndMonsters.jar"
 ___
 ## Я в Telegram: [mzxrov](https://t.me/mzxrov)

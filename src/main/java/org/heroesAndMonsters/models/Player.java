@@ -23,7 +23,6 @@ public class Player extends Creature {
         this.maxHealth = this.getHealth();
     }
 
-
     public void hillUp() {
         if (this.countOfHills > 0) {
             this.setHealth(this.getHealth() + (int) (this.maxHealth * 0.3));

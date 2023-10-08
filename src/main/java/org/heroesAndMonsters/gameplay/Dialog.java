@@ -21,24 +21,23 @@ public class Dialog {
         System.err.println("Ответ " + answer + " не корректный!\n");
     }
 
-
     public void heroIsReady(Creature creature) {
-        System.out.printf("\u001b[32m" + "Герой %s готов к сражению!\n" + "\u001b[0m", creature.getName());
+        System.out.printf("Герой %s готов к сражению!\n", creature.getName());
     }
 
     public void monsterIsComing(Creature creature) {
-        System.out.printf("\u001b[35;1m" + "%s врывается на поле боя!\n" + "\u001b[0m", creature.getName());
+        System.out.printf("%s врывается на поле боя!\n", creature.getName());
         getInfo(creature);
     }
 
     public void getInfo(Creature creature) {
-        System.out.printf("\u001b[31;1m" + "Имя - %s, атака - %d, защита - %d, здоровье - %d, минимальный урон - %d, " +
-                        "максимальный урон - %d \n" + "\u001b[0m", creature.getName(), creature.getAttack(),
+        System.out.printf("Имя - %s, атака - %d, защита - %d, здоровье - %d, минимальный урон - %d, " +
+                        "максимальный урон - %d \n", creature.getName(), creature.getAttack(),
                 creature.getDefense(), creature.getHealth(), creature.getDamageMin(), creature.getDamageMax());
     }
 
     public void battleBegin(String player, String monster) {
-        System.out.printf("\u001b[33;1m" + "Начинается битва между %s и %s \n" + "\u001b[0m", player, monster);
+        System.out.printf("Начинается битва между %s и %s \n", player, monster);
     }
 
     public void hit(String attacking, String defending, int damage, int remainsOfHealth) {
@@ -47,23 +46,19 @@ public class Dialog {
     }
 
     public void youNeedToHillUp() {
-        System.out.println("\u001b[35;1m" + "Ваш уровень здоровья слишком низкий, желаете исцелиться?" + "\u001b[0m");
+        System.out.println("Ваш уровень здоровья слишком низкий, желаете исцелиться?");
     }
 
     public void successfulHillUp(int health, int potionCounts) {
-        System.out.printf("\u001b[32;1m" + "Вы исцелились! Ваше здоровье равно %d У вас осталось %d зелий исцеления. \n"
-                + "\u001b[0m", health, potionCounts);
+        System.out.printf("Вы исцелились! Ваше здоровье равно %d У вас осталось %d зелий исцеления. \n", health, potionCounts);
     }
 
     public void resultOfTheBattle(Creature winner, Creature loser) {
-        System.out.printf("\u001b[36;1m" + "%s оказался сильнее! Битва окончена. \n" + "\u001b[0m",
-                (winner.isAlive()) ? winner.getName() : loser.getName());
-        System.out.printf("\u001b[34;1m" + "%s отправляется на кладбище кормить червей! \n" + "\u001b[0m",
-                (winner.isAlive()) ? loser.getName() : winner.getName());
+        System.out.printf("%s оказался сильнее! Битва окончена. \n", (winner.isAlive()) ? winner.getName() : loser.getName());
+        System.out.printf("%s отправляется на кладбище кормить червей! \n", (winner.isAlive()) ? loser.getName() : winner.getName());
     }
 
     public void resultOfTheGame(Map<String, Integer> graveyard) {
-        System.out.println("\u001b[33m" + "Игра окончена! Вот список побежденных вами монстров: "
-                + graveyard.entrySet() + "\u001b[0m");
+        System.out.println("Игра окончена! Вот список побежденных вами монстров: " + graveyard.entrySet());
     }
 }

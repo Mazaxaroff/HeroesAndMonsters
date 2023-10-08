@@ -14,7 +14,7 @@ public class InputService {
     public String inputName() {
         String name = null;
         while (name == null) {
-            System.out.println("\u001b[36m" + dialog.INPUT_NAME + "\u001b[0m");
+            System.out.println(dialog.INPUT_NAME);
             name = scanner.nextLine();
         }
         return name;
@@ -62,7 +62,7 @@ public class InputService {
         boolean isValidInput = false;
         while (!isValidInput) {
             try {
-                System.out.println("\u001b[36m" + message + "\u001b[0m");
+                System.out.println(message);
                 value = scanner.nextInt();
                 if (value >= min && value <= max) {
                     isValidInput = true;
